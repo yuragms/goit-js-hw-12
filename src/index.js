@@ -39,8 +39,8 @@ function renderCountry (countries) {
         console.log('one');
         countryInfo.innerHTML = countyTemplates(countries[0]);
         clearListCountry();
-        // Notiflix.Notify.Init({useFontAwesome:true,fontAwesomeIconStyle:"shadow",});
-        Notiflix.Notify.Info('Cogito ergo sum');
+        Notiflix.Notify.Init({useFontAwesome:true,fontAwesomeIconStyle:"shadow",});
+        
        }
 
     else {
