@@ -3,7 +3,7 @@ import countyTemplates from './templates/country.hbs';
 import countyListTemplates from './templates/listCountry.hbs';
 import API from './js/fetchCountries.js';
 
-import Notiflix from "notiflix";
+// import Notiflix from "notiflix";
 
 
 
@@ -31,7 +31,7 @@ function onSearch (e) {
 
 
 function renderCountry (countries) {
-    Notiflix.Notify.Success('Success message text');
+    // Notiflix.Notify.Success('Success message text');
     console.log(countries);
     let countCountries = countries.length;
     console.log(countCountries);
