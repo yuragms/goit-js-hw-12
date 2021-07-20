@@ -3,7 +3,7 @@ import countyTemplates from './templates/country.hbs';
 import countyListTemplates from './templates/listCountry.hbs';
 import API from './js/fetchCountries.js';
 
-// import Notiflix from "notiflix";
+import Notiflix from 'notiflix';
 
 
 
