@@ -40,7 +40,7 @@ function renderCountry (countries) {
         countryInfo.innerHTML = countyTemplates(countries[0]);
         clearListCountry();
         Notiflix.Notify.Init({useFontAwesome:true,fontAwesomeIconStyle:"shadow",});
-        
+     
        }
 
     else {
@@ -59,6 +59,7 @@ function onFetchError (error) {
 
 function clearListCountry() {
     countryList.innerHTML = '';
+   
 }
 
 function clearCountryInfo() {
