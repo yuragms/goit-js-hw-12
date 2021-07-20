@@ -16,3 +16,13 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+li svg {
+  margin-right: 16px;
+}
+
+li {
+  padding-top: 5px;
+  list-style-type: none;
+  display: flex;
+}

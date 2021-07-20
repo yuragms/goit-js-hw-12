@@ -1,26 +1,51 @@
 import './scss/styles.scss';
 import countyTemplates from './templates/country.hbs';
-import fetchCountries from './js/fetchCountries.js';
+import countyListTemplates from './templates/listCountry.hbs';
+import API from './js/fetchCountries.js';
 
 
 
 const countryInfo = document.querySelector('.country-info');
 const searchInput = document.querySelector('#search-box');
+const countryList = document.querySelector('.country-list');
 
 const DEBOUNCE_DELAY = 300;
 
-const countryArr = fetch ('https://restcountries.eu/rest/v2/name/uk')
-.then(response => { return response.json();})
-.then( countries => {
+searchInput.addEventListener('input', onSearch);
+
+
+function onSearch (e) {
+  e.preventDefault();
+  let inputValue = e.currentTarget.value;
+  console.log(inputValue);
+  API.fetchCountries(inputValue)
+  .then(renderCountry)
+  .catch(onFetchError);
+}
+
+
+
+
+function renderCountry (countries) {
     console.log(countries);
-    countryInfo.innerHTML = countyTemplates(countries[0]);
-})
-.catch( error => {console.log('error');});
+    let countCountries = countries.length
+    console.log(countCountries);
+    if (countCountries === 1 )
 
-console.log(countryArr);
+    {countryInfo.innerHTML = countyTemplates(countries[0]);}
 
-countryInfo.innerHTML = countyTemplates();
+    else {
+        if (countCountries > 1 && countCountries < 11 )
+        { console.log("стран от 1 до 10");
+        countryList.innerHTML = countyListTemplates(countries);
+    }
+    }
 
-console.log(fetchCountries);
+}
+
+function onFetchError (error) {
+    alert('error');
+}
+
 
 
