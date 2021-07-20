@@ -15,6 +15,7 @@ searchInput.addEventListener('input', onSearch);
 
 
 function onSearch (e) {
+    
   e.preventDefault();
   let inputValue = e.currentTarget.value;
   console.log(inputValue);
@@ -28,11 +29,13 @@ function onSearch (e) {
 
 function renderCountry (countries) {
     console.log(countries);
-    let countCountries = countries.length
+    let countCountries = countries.length;
     console.log(countCountries);
-    if (countCountries === 1 )
-
-    {countryInfo.innerHTML = countyTemplates(countries[0]);}
+    if (countCountries = 1) {
+        console.log('one');
+        countryInfo.innerHTML = countyTemplates(countries[0]);
+        clearListCountry();
+       }
 
     else {
         if (countCountries > 1 && countCountries < 11 )
@@ -45,6 +48,10 @@ function renderCountry (countries) {
 
 function onFetchError (error) {
     alert('error');
+}
+
+function clearListCountry() {
+    countryList.innerHTML = '';
 }
 
 
