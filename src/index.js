@@ -3,9 +3,7 @@ import countyTemplates from './templates/country.hbs';
 import countyListTemplates from './templates/listCountry.hbs';
 import API from './js/fetchCountries.js';
 
-import Notiflix from 'notiflix';
-
-
+import Notiflix from "notiflix";
 
 const countryInfo = document.querySelector('.country-info');
 const searchInput = document.querySelector('#search-box');
@@ -31,11 +29,12 @@ function onSearch (e) {
 
 
 function renderCountry (countries) {
-    // Notiflix.Notify.Success('Success message text');
+    
     console.log(countries);
     let countCountries = countries.length;
     console.log(countCountries);
     if (countCountries === 1) {
+        Notiflix.Notify.Init({useFontAwesome:true,fontAwesomeIconStyle:"shadow",});
         console.log('one');
         countryInfo.innerHTML = countyTemplates(countries[0]);
         clearListCountry();
