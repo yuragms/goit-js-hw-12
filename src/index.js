@@ -3,6 +3,8 @@ import countyTemplates from './templates/country.hbs';
 import countyListTemplates from './templates/listCountry.hbs';
 import API from './js/fetchCountries.js';
 
+import Notiflix from "notiflix";
+
 
 
 const countryInfo = document.querySelector('.country-info');
@@ -19,6 +21,7 @@ function onSearch (e) {
   e.preventDefault();
   let inputValue = e.currentTarget.value;
   console.log(inputValue);
+  if (inputValue.trim('') === '') { clearListCountry();   return;  }
   API.fetchCountries(inputValue)
   .then(renderCountry)
   .catch(onFetchError);
@@ -28,10 +31,11 @@ function onSearch (e) {
 
 
 function renderCountry (countries) {
+    Notiflix.Notify.Success('Success message text');
     console.log(countries);
     let countCountries = countries.length;
     console.log(countCountries);
-    if (countCountries = 1) {
+    if (countCountries === 1) {
         console.log('one');
         countryInfo.innerHTML = countyTemplates(countries[0]);
         clearListCountry();
@@ -41,6 +45,7 @@ function renderCountry (countries) {
         if (countCountries > 1 && countCountries < 11 )
         { console.log("стран от 1 до 10");
         countryList.innerHTML = countyListTemplates(countries);
+        clearCountryInfo();
     }
     }
 
@@ -52,6 +57,10 @@ function onFetchError (error) {
 
 function clearListCountry() {
     countryList.innerHTML = '';
+}
+
+function clearCountryInfo() {
+    countryInfo.innerHTML = '';
 }
 
 
