@@ -5,6 +5,7 @@ import API from './js/fetchCountries.js';
 
 import Notiflix from "notiflix";
 
+
 const countryInfo = document.querySelector('.country-info');
 const searchInput = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
@@ -34,10 +35,12 @@ function renderCountry (countries) {
     let countCountries = countries.length;
     console.log(countCountries);
     if (countCountries === 1) {
-        Notiflix.Notify.Init({useFontAwesome:true,fontAwesomeIconStyle:"shadow",});
+        
         console.log('one');
         countryInfo.innerHTML = countyTemplates(countries[0]);
         clearListCountry();
+        // Notiflix.Notify.Init({useFontAwesome:true,fontAwesomeIconStyle:"shadow",});
+        Notiflix.Notify.Info('Cogito ergo sum');
        }
 
     else {
