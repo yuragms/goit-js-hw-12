@@ -2,6 +2,7 @@ import './scss/styles.scss';
 import countyTemplates from './templates/country.hbs';
 import countyListTemplates from './templates/listCountry.hbs';
 import API from './js/fetchCountries.js';
+import debounce from 'lodash.debounce';
 
 import Notiflix from "notiflix";
 
@@ -12,7 +13,7 @@ const countryList = document.querySelector('.country-list');
 
 const DEBOUNCE_DELAY = 300;
 
-searchInput.addEventListener('input', onSearch);
+searchInput.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 
 function onSearch (e) {
@@ -30,29 +31,31 @@ function onSearch (e) {
 
 
 function renderCountry (countries) {
-    
-    console.log(countries.status);
+    if ( countries.status === 404) {
+        Notiflix.Notify.failure('Oops, there is no country with that name');
+        clearListCountry();
+    } else {
+    // console.log(countries.status);
     let countCountries = countries.length;
-    console.log(countCountries);
+    // console.log(countCountries);
     if (countCountries === 1) {
         
         console.log('one');
         countryInfo.innerHTML = countyTemplates(countries[0]);
         clearListCountry();
         // Notiflix.Notify.Init({useFontAwesome:true,fontAwesomeIconStyle:"shadow",});
-       
-        
        }
 
     else {
-        if (countCountries > 1 && countCountries < 11 )
-        { console.log("стран от 1 до 10");
+    if (countCountries > 1 && countCountries < 11 ) { 
+        // console.log("стран от 1 до 10");
         countryList.innerHTML = countyListTemplates(countries);
         clearCountryInfo();
-    } else { Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')}
+    } 
+    else { Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')}
     }
 
-}
+}}
 
 function onFetchError (error) {
     alert('error');
