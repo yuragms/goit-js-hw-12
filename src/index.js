@@ -19,7 +19,8 @@ searchInput.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 function onSearch (e) {
     
   e.preventDefault();
-  let inputValue = e.currentTarget.value;
+//   let inputValue = e.currentTarget.value;
+let inputValue = e.target.value;
   console.log(inputValue);
   if (inputValue.trim('') === '') { clearListCountry();   return;  }
   API.fetchCountries(inputValue)
@@ -52,7 +53,10 @@ function renderCountry (countries) {
         countryList.innerHTML = countyListTemplates(countries);
         clearCountryInfo();
     } 
-    else { Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')}
+    else { Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')};
+    clearListCountry();
+    clearCountryInfo();
+
     }
 
 }}
