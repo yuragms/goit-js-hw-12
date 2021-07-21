@@ -31,7 +31,7 @@ function onSearch (e) {
 
 function renderCountry (countries) {
     
-    console.log(countries);
+    console.log(countries.status);
     let countCountries = countries.length;
     console.log(countCountries);
     if (countCountries === 1) {
@@ -39,8 +39,9 @@ function renderCountry (countries) {
         console.log('one');
         countryInfo.innerHTML = countyTemplates(countries[0]);
         clearListCountry();
-        Notiflix.Notify.Init({useFontAwesome:true,fontAwesomeIconStyle:"shadow",});
-     
+        // Notiflix.Notify.Init({useFontAwesome:true,fontAwesomeIconStyle:"shadow",});
+       
+        
        }
 
     else {
@@ -48,7 +49,7 @@ function renderCountry (countries) {
         { console.log("стран от 1 до 10");
         countryList.innerHTML = countyListTemplates(countries);
         clearCountryInfo();
-    }
+    } else { Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')}
     }
 
 }
