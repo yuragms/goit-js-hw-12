@@ -39,7 +39,7 @@ function renderCountry (countries) {
     } else {
     // console.log(countries.status);
     let countCountries = countries.length;
-    // console.log(countCountries);
+    console.log(countCountries);
     if (countCountries === 1) {
         
         console.log('one');
@@ -50,13 +50,15 @@ function renderCountry (countries) {
 
     else {
     if (countCountries > 1 && countCountries < 11 ) { 
-        // console.log("стран от 1 до 10");
+        console.log("стран от 1 до 10");
         countryList.innerHTML = countyListTemplates(countries);
         clearCountryInfo();
     } 
-    else { Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')};
-    clearListCountry();
-    clearCountryInfo();
+    else {
+        clearListCountry();
+        Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')};
+    
+    
 
     }
 
