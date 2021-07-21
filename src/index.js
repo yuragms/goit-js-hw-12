@@ -13,6 +13,7 @@ const countryList = document.querySelector('.country-list');
 
 const DEBOUNCE_DELAY = 300;
 
+
 searchInput.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 
